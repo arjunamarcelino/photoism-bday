@@ -11,8 +11,9 @@ interface MacWindowProps {
 
 export default function MacWindow({ title, isOpen, onClose, children }: MacWindowProps) {
   useEffect(() => {
+    if (!isOpen) return;
     const handleEsc = (e: KeyboardEvent) => {
-      if (e.key === "Escape" && isOpen) onClose();
+      if (e.key === "Escape") onClose();
     };
     window.addEventListener("keydown", handleEsc);
     return () => window.removeEventListener("keydown", handleEsc);
@@ -38,14 +39,14 @@ export default function MacWindow({ title, isOpen, onClose, children }: MacWindo
           {/* Close box */}
           <button
             onClick={onClose}
-            className="w-[11px] h-[11px] border border-black bg-white hover:bg-black active:bg-black shrink-0 relative z-10 cursor-pointer"
+            className="w-[11px] h-[11px] border border-black bg-white hover:bg-black active:bg-black shrink-0 relative z-10 cursor-pointer before:absolute before:-inset-4 before:content-['']"
             aria-label="Close window"
           />
           {/* Title */}
           <div className="flex-1 flex justify-center relative z-10">
             <span
-              className="bg-white px-2 text-xs font-[family-name:var(--font-retro)] font-[family-name:var(--font-retro-fallback)] leading-none select-none"
-              style={{ fontSize: "11px" }}
+              className="bg-white px-2 text-xs font-[family-name:var(--font-retro)] leading-none select-none"
+              style={{ fontSize: "13px" }}
             >
               {title}
             </span>

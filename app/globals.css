@@ -9,14 +9,8 @@
 }
 
 @theme {
-  --color-bday-light: #ADD8E6;
-  --color-bday-sky: #87CEFA;
-  --color-bday-highlight: #E0F4FF;
-  --color-bday-dark: #0a0a0a;
-  --color-bday-text: #1a1a2e;
-
   --color-mac-bg: #c0c0c0;
-  --color-mac-desktop: #008080;
+  --color-mac-desktop: #87CEFA;
   --color-mac-titlebar: #000080;
   --color-mac-border: #000000;
   --color-mac-highlight: #ffffff;
@@ -27,8 +21,6 @@
   --font-display: 'Playfair Display', serif;
 
   --animate-fade-in: fadeIn 0.6s ease-out;
-  --animate-swing-open: swingOpen 1.2s cubic-bezier(0.65, 0, 0.35, 1) forwards;
-  --animate-flicker: flicker 0.15s ease-in-out;
 }
 
 @keyframes fadeIn {
@@ -36,36 +28,14 @@
   to { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes swingOpen {
-  from { transform: perspective(1200px) rotateY(0deg); }
-  50% { transform: perspective(1200px) rotateY(-130deg); }
-  to { transform: perspective(1200px) rotateY(-120deg); }
-}
-
-@keyframes flicker {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.4; }
-}
-
-@keyframes lampGlow {
-  from { opacity: 0; transform: scale(0.6); }
-  to { opacity: 1; transform: scale(1); }
-}
-
 @keyframes hintFade {
   from { opacity: 0; }
   to { opacity: 0.6; }
 }
 
-@keyframes gentleBounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-6px); }
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  33% { transform: translateY(-20px) rotate(5deg); }
-  66% { transform: translateY(-10px) rotate(-3deg); }
+@keyframes pulse {
+  0%, 100% { opacity: 0.4; filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0)); }
+  50% { opacity: 0.8; filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.3)); }
 }
 
 .mac-title-bar {
