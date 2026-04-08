@@ -112,7 +112,7 @@ export default function WishesContent() {
           className="bg-white border border-gray-300 p-2 mac-beveled cursor-pointer text-left hover:brightness-95 transition-all"
         >
           {/* Author */}
-          <h3 className="font-bold mb-1 font-[family-name:var(--font-retro)]" style={{ fontSize: "12px" }}>
+          <h3 className="font-bold mb-1 font-[family-name:var(--font-retro)]" style={{ fontSize: "13px" }}>
             {wish.author}
           </h3>
 
@@ -144,11 +144,11 @@ export default function WishesContent() {
 
           {/* Message snippet */}
           {wish.message && (
-            <p className="mt-1 text-gray-600 font-[family-name:var(--font-retro)] truncate" style={{ fontSize: "10px" }}>
+            <p className="mt-1 text-gray-600 font-[family-name:var(--font-retro)] truncate" style={{ fontSize: "13px" }}>
               {wish.message}
             </p>
           )}
-          <span className="text-mac-shadow font-[family-name:var(--font-retro)] mt-1 block" style={{ fontSize: "10px" }}>
+          <span className="text-mac-shadow font-[family-name:var(--font-retro)] mt-1 block" style={{ fontSize: "13px" }}>
             see more...
           </span>
         </button>
