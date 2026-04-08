@@ -130,18 +130,9 @@ export default function WishesContent() {
           {/* Media thumbnail — uniform height for all types */}
           <div className="relative w-full h-24 sm:h-32 bg-gray-100 mac-beveled-inset overflow-hidden">
             {wish.mediaType === "video" ? (
-              <>
-                <video
-                  src={wish.mediaUrl}
-                  preload="metadata"
-                  className="absolute inset-0 w-full h-full object-cover object-center"
-                  playsInline
-                  muted
-                />
-                <div className="absolute inset-0 flex items-center justify-center bg-black/20">
-                  <span className="text-2xl text-white drop-shadow">▶</span>
-                </div>
-              </>
+              <div className="absolute inset-0 flex items-center justify-center bg-gray-200">
+                <span className="text-3xl">▶</span>
+              </div>
             ) : (
               <Image
                 src={wish.mediaUrl}
