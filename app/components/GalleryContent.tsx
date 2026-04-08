@@ -13,8 +13,8 @@ export default function GalleryContent() {
   const cardPositions = useMemo(
     () =>
       photos.map((_, i) => ({
-        x: (i % 3) * 120 - 100 + Math.random() * 40,
-        y: Math.floor(i / 3) * 100 + Math.random() * 30,
+        x: (i % 3) * 80 - 60 + Math.random() * 40,
+        y: Math.floor(i / 3) * 80 + Math.random() * 30,
         rotate: -15 + Math.random() * 30,
       })),
     []
@@ -33,35 +33,12 @@ export default function GalleryContent() {
       ref={containerRef}
       className="relative w-full min-h-[400px] sm:min-h-[500px] overflow-hidden"
     >
-      {/* Mobile: scrollable row */}
-      <div className="flex gap-4 overflow-x-auto p-4 sm:hidden snap-x snap-mandatory">
-        {photos.map((photo) => (
-          <div
-            key={photo.id}
-            className="shrink-0 w-56 snap-center"
-          >
-            <div className="bg-white p-2 shadow-md border border-gray-200">
-              <div className="relative w-full h-44 bg-gray-100">
-                <Image
-                  src={photo.url}
-                  alt={photo.caption ?? `Photo ${photo.id}`}
-                  fill
-                  className="object-cover"
-                  sizes="224px"
-                />
-              </div>
-              {photo.caption && (
-                <p className="text-xs text-center mt-2 text-gray-600 font-[family-name:var(--font-retro)]">
-                  {photo.caption}
-                </p>
-              )}
-            </div>
-          </div>
-        ))}
-      </div>
-
-      {/* Desktop: draggable scattered cards */}
-      <div className="hidden sm:block relative h-[500px]" ref={containerRef}>
+      {/* Background text */}
+      <p className="absolute inset-0 flex items-center justify-center pointer-events-none select-none font-[family-name:var(--font-retro)] text-black/10 text-4xl sm:text-6xl">
+        photoism
+      </p>
+      {/* Draggable scattered cards */}
+      <div className="relative h-[400px] sm:h-[500px]">
         {photos.map((photo, i) => (
           <motion.div
             key={photo.id}
@@ -69,22 +46,24 @@ export default function GalleryContent() {
             dragConstraints={containerRef}
             dragElastic={0.1}
             onDragStart={() => setTopCard(photo.id)}
-            className="absolute cursor-grab active:cursor-grabbing"
+            onPointerDown={() => setTopCard(photo.id)}
+            className="absolute cursor-grab active:cursor-grabbing touch-none"
             style={{
-              x: cardPositions[i].x + 150,
-              y: cardPositions[i].y + 20,
+              x: cardPositions[i].x + 100,
+              y: cardPositions[i].y + 10,
               rotate: cardPositions[i].rotate,
               zIndex: topCard === photo.id ? 50 : photos.length - i,
             }}
           >
-            <div className="bg-white p-2 shadow-lg border border-gray-200 hover:shadow-xl transition-shadow w-48 md:w-56">
-              <div className="relative w-full h-36 md:h-44 bg-gray-100">
+            <div className="bg-white p-2 shadow-lg border border-gray-200 hover:shadow-xl transition-shadow w-36 sm:w-48 md:w-56 pointer-events-none select-none">
+              <div className="relative w-full h-28 sm:h-36 md:h-44 bg-gray-100">
                 <Image
                   src={photo.url}
                   alt={photo.caption ?? `Photo ${photo.id}`}
                   fill
                   className="object-cover"
-                  sizes="240px"
+                  draggable={false}
+                  sizes="(max-width: 640px) 144px, 240px"
                 />
               </div>
               {photo.caption && (
