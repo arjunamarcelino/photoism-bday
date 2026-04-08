@@ -19,29 +19,29 @@ export const wishes: Wish[] = [
     id: "1",
     author: "Yosua",
     mediaType: "photo",
-    mediaUrl: "/images/wishes/arjuna.jpg",
-    message: ""
+    mediaUrl: "/images/wishes/1.jpeg",
+    message: "Kak sharon S.Hut yaa. Semoga di usia yang baru ini, Tuhan selalu menyertai setiap langkahmu, memberi kesehatan, hikmat, dan kekuatan dalam menjalani segala hal."
   },
   {
     id: "2",
     author: "Zz",
     mediaType: "video",
     mediaUrl: "/images/wishes/friend2.jpg",
-    message: "Ka Sharon! Another year of being awesome. May this year bring you even more joy and laughter!"
+    message: ""
   },
   {
     id: "3",
     author: "Tasia",
     mediaType: "photo",
     mediaUrl: "/images/wishes/friend3.jpg",
-    message: "Happy birthday to the most wonderful person! Keep shining bright, Ka Sharon!"
+    message: "hapibidii kak sharonna✨ may God loves and leads ur way always yaa 🫶🏻"
   },
   {
     id: "4",
     author: "Juna",
     mediaType: "photo",
     mediaUrl: "/images/wishes/friend3.jpg",
-    message: "Happy birthday to the most wonderful person! Keep shining bright, Ka Sharon!"
+    message: "Ka Sharon! Another year of being awesome. May this year bring you even more joy and laughter!"
   },
   {
     id: "5",
