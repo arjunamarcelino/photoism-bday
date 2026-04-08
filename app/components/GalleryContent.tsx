@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useMemo } from "react";
 import { motion } from "motion/react";
 import Image from "next/image";
 import { photos } from "@/data/content";
@@ -9,16 +9,20 @@ export default function GalleryContent() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [topCard, setTopCard] = useState<string | null>(null);
 
-  // Pre-compute scattered positions for each card
-  const cardPositions = photos.map((_, i) => ({
-    x: (i % 3) * 120 - 100 + Math.random() * 40,
-    y: Math.floor(i / 3) * 100 + Math.random() * 30,
-    rotate: -15 + Math.random() * 30,
-  }));
+  // Pre-compute scattered positions for each card (stable across re-renders)
+  const cardPositions = useMemo(
+    () =>
+      photos.map((_, i) => ({
+        x: (i % 3) * 120 - 100 + Math.random() * 40,
+        y: Math.floor(i / 3) * 100 + Math.random() * 30,
+        rotate: -15 + Math.random() * 30,
+      })),
+    []
+  );
 
   if (photos.length === 0) {
     return (
-      <div className="flex items-center justify-center h-48 text-mac-dark font-[family-name:var(--font-retro)] font-[family-name:var(--font-retro-fallback)]">
+      <div className="flex items-center justify-center h-48 text-mac-dark font-[family-name:var(--font-retro)]">
         <p>No photos yet. Check back soon!</p>
       </div>
     );
@@ -47,7 +51,7 @@ export default function GalleryContent() {
                 />
               </div>
               {photo.caption && (
-                <p className="text-xs text-center mt-2 text-gray-600 font-[family-name:var(--font-retro)] font-[family-name:var(--font-retro-fallback)]">
+                <p className="text-xs text-center mt-2 text-gray-600 font-[family-name:var(--font-retro)]">
                   {photo.caption}
                 </p>
               )}
@@ -84,7 +88,7 @@ export default function GalleryContent() {
                 />
               </div>
               {photo.caption && (
-                <p className="text-xs text-center mt-2 text-gray-600 font-[family-name:var(--font-retro)] font-[family-name:var(--font-retro-fallback)]">
+                <p className="text-xs text-center mt-2 text-gray-600 font-[family-name:var(--font-retro)]">
                   {photo.caption}
                 </p>
               )}

@@ -12,17 +12,36 @@ export default function DesktopScene() {
 
   return (
     <section
-      className="min-h-screen relative"
+      className="h-svh relative overflow-hidden"
       style={{
-        backgroundColor: "#008080",
+        backgroundColor: "#87CEFA",
         backgroundImage: "url('/images/wallpaper-blurred.jpg')",
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
     >
+      {/* Wallpaper text layer — behind icons, decorative only */}
+      <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
+        <h1
+          aria-hidden="true"
+          className="font-[family-name:var(--font-display)] text-white/60 text-5xl sm:text-6xl md:text-8xl text-center px-4 leading-tight"
+        >
+          Happy Birthday,
+          <br />
+          Ka Sharon!
+        </h1>
+        <p
+          aria-hidden="true"
+          className="font-[family-name:var(--font-display)] text-white/50 text-lg sm:text-xl mt-4 text-center px-4"
+        >
+          From all of us who love you dearly
+        </p>
+      </div>
+
       {/* Menu bar */}
-      <div className="sticky top-0 z-40 h-[20px] bg-white border-b border-black flex items-center px-2 gap-4 font-[family-name:var(--font-retro)] font-[family-name:var(--font-retro-fallback)]"
-        style={{ fontSize: "11px" }}
+      <div
+        className="sticky top-0 z-40 h-[20px] bg-white border-b border-black flex items-center px-2 gap-4 font-[family-name:var(--font-retro)]"
+        style={{ fontSize: "13px" }}
       >
         <span className="font-bold text-sm">&#63743;</span>
         <span className="font-bold">File</span>
@@ -53,10 +72,11 @@ export default function DesktopScene() {
               <path d="M4 20 L12 14 L18 18 L22 15 L28 20 V24 H4Z" fill="#4CAF50" />
             </svg>
           </div>
-          <span className="text-white text-xs font-[family-name:var(--font-retro)] font-[family-name:var(--font-retro-fallback)] text-center leading-tight group-hover:bg-black group-hover:text-white px-1"
+          <span
+            className="text-white text-xs font-[family-name:var(--font-retro)] text-center leading-tight group-hover:bg-black group-hover:text-white px-1"
             style={{
               textShadow: "1px 1px 2px rgba(0,0,0,0.8)",
-              fontSize: "11px",
+              fontSize: "13px",
             }}
           >
             Gallery
@@ -79,10 +99,11 @@ export default function DesktopScene() {
               <path d="M12 2 L16 6 L20 2" fill="#FF6B6B" stroke="black" strokeWidth="0.5" />
             </svg>
           </div>
-          <span className="text-white text-xs font-[family-name:var(--font-retro)] font-[family-name:var(--font-retro-fallback)] text-center leading-tight group-hover:bg-black group-hover:text-white px-1"
+          <span
+            className="text-white text-xs font-[family-name:var(--font-retro)] text-center leading-tight group-hover:bg-black group-hover:text-white px-1"
             style={{
               textShadow: "1px 1px 2px rgba(0,0,0,0.8)",
-              fontSize: "11px",
+              fontSize: "13px",
             }}
           >
             Wishes

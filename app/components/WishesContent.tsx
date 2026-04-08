@@ -7,10 +7,11 @@ import { wishes } from "@/data/content";
 export default function WishesContent() {
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // Cleanup videos on unmount
+  // Cleanup videos on unmount (capture ref at effect time)
   useEffect(() => {
+    const container = containerRef.current;
     return () => {
-      const videos = containerRef.current?.querySelectorAll("video");
+      const videos = container?.querySelectorAll("video");
       videos?.forEach((v) => {
         v.pause();
         v.currentTime = 0;
@@ -20,7 +21,7 @@ export default function WishesContent() {
 
   if (wishes.length === 0) {
     return (
-      <div className="flex items-center justify-center h-48 text-mac-dark font-[family-name:var(--font-retro)] font-[family-name:var(--font-retro-fallback)]">
+      <div className="flex items-center justify-center h-48 text-mac-dark font-[family-name:var(--font-retro)]">
         <p>No wishes yet. Check back soon!</p>
       </div>
     );
@@ -34,7 +35,7 @@ export default function WishesContent() {
           className="bg-white border border-gray-300 p-3 mac-beveled"
         >
           {/* Author */}
-          <h3 className="font-bold text-sm mb-2 font-[family-name:var(--font-retro)] font-[family-name:var(--font-retro-fallback)]">
+          <h3 className="font-bold text-sm mb-2 font-[family-name:var(--font-retro)]">
             {wish.author}
           </h3>
 
