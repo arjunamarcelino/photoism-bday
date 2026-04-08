@@ -39,7 +39,7 @@ export default function MacWindow({ title, isOpen, onClose, children }: MacWindo
           {/* Close box */}
           <button
             onClick={onClose}
-            className="w-[11px] h-[11px] border border-black bg-white hover:bg-black active:bg-black shrink-0 relative z-10 cursor-pointer"
+            className="w-[11px] h-[11px] border border-black bg-white hover:bg-black active:bg-black shrink-0 relative z-10 cursor-pointer before:absolute before:-inset-4 before:content-['']"
             aria-label="Close window"
           />
           {/* Title */}

@@ -26,7 +26,7 @@ function WishDialog({ wish, onClose }: { wish: Wish; onClose: () => void }) {
         <div className="mac-title-bar h-[19px] flex items-center px-1 shrink-0 border-b border-black relative">
           <button
             onClick={onClose}
-            className="w-[11px] h-[11px] border border-black bg-white hover:bg-black active:bg-black shrink-0 relative z-10 cursor-pointer"
+            className="w-[11px] h-[11px] border border-black bg-white hover:bg-black active:bg-black shrink-0 relative z-10 cursor-pointer before:absolute before:-inset-4 before:content-['']"
             aria-label="Close"
           />
           <div className="flex-1 flex justify-center relative z-10">

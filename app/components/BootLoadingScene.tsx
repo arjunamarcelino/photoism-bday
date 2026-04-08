@@ -67,8 +67,8 @@ export default function BootLoadingScene({ onComplete }: SceneProps) {
 
       {/* Progress bar */}
       <div
-        className="mac-beveled-inset bg-[#222]"
-        style={{ width: 200, height: 14, padding: 2 }}
+        className="mac-beveled-inset bg-[#222] w-[60vw] max-w-[200px]"
+        style={{ height: 14, padding: 2 }}
       >
         <div
           className="h-full"

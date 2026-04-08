@@ -57,12 +57,21 @@ export default function LockScreenScene({ onComplete }: SceneProps) {
   };
 
   return (
-    <div className="absolute inset-0 bg-mac-bg overflow-y-auto flex flex-col items-center justify-center">
-      <div className="flex flex-col items-center gap-3">
+    <div
+      className="absolute inset-0 overflow-y-auto flex flex-col items-center justify-center"
+      style={{
+        backgroundImage: "url('/images/home.png')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
+      {/* Overlay for readability */}
+      <div className="absolute inset-0 bg-black/40" />
+      <div className="relative z-10 flex flex-col items-center gap-3">
         {/* Welcome text */}
         <p
-          className="text-mac-dark text-center px-4 mb-2 font-[family-name:var(--font-retro)]"
-          style={{ fontSize: "13px" }}
+          className="text-white text-center px-4 mb-2 font-[family-name:var(--font-retro)]"
+          style={{ fontSize: "13px", textShadow: "0 1px 4px rgba(0,0,0,0.6)" }}
         >
           Hey there! Are you ready to have fun with us?
         </p>
@@ -73,8 +82,8 @@ export default function LockScreenScene({ onComplete }: SceneProps) {
 
         {/* Username */}
         <p
-          className="font-[family-name:var(--font-retro)] text-mac-dark"
-          style={{ fontSize: "13px" }}
+          className="font-[family-name:var(--font-retro)] text-white"
+          style={{ fontSize: "13px", textShadow: "0 1px 4px rgba(0,0,0,0.6)" }}
         >
           Sharon
         </p>
@@ -84,16 +93,18 @@ export default function LockScreenScene({ onComplete }: SceneProps) {
           <input
             ref={inputRef}
             type="password"
+            inputMode="numeric"
+            pattern="[0-9]*"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="mac-beveled-inset bg-white px-2 py-1 text-center w-40 outline-none font-[family-name:var(--font-retro)]"
+            className="mac-beveled-inset bg-white/90 px-2 py-1 text-center w-40 outline-none font-[family-name:var(--font-retro)]"
             style={{ fontSize: "13px" }}
             aria-label="Password"
             autoComplete="off"
           />
           <button
             type="submit"
-            className="mac-beveled bg-mac-bg px-6 py-1 cursor-pointer border border-black font-[family-name:var(--font-retro)] active:translate-y-px"
+            className="mac-beveled bg-white/80 px-6 py-1 cursor-pointer border border-white/50 font-[family-name:var(--font-retro)] active:translate-y-px"
             style={{ fontSize: "13px" }}
           >
             OK
@@ -101,7 +112,7 @@ export default function LockScreenScene({ onComplete }: SceneProps) {
         </form>
 
         {/* Hint */}
-        <p className="text-mac-shadow font-[family-name:var(--font-retro)]" style={{ fontSize: "12px" }}>
+        <p className="text-white/70 font-[family-name:var(--font-retro)]" style={{ fontSize: "12px", textShadow: "0 1px 3px rgba(0,0,0,0.5)" }}>
           Hint: today&apos;s date (DDMMYY)
         </p>
       </div>
@@ -111,7 +122,7 @@ export default function LockScreenScene({ onComplete }: SceneProps) {
         <>
           <div className="fixed inset-0 bg-black/20 z-50" onClick={dismissError} />
           <div
-            className="fixed top-1/3 left-1/2 -translate-x-1/2 mac-beveled bg-mac-bg w-72 z-50 border-2 border-black"
+            className="fixed top-1/3 left-1/2 -translate-x-1/2 mac-beveled bg-mac-bg w-[85vw] max-w-72 z-50 border-2 border-black"
             role="alertdialog"
             aria-label="Incorrect password"
           >
