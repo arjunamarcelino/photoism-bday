@@ -40,7 +40,7 @@ export const wishes: Wish[] = [
     id: "4",
     author: "Juna",
     mediaType: "photo",
-    mediaUrl: "/images/wishes/friend3.jpg",
+    mediaUrl: "/images/wishes/4.gif",
     message: "Happy birthday, Ka Sharon! Another year of being awesome. May this year bring you even more joy and laughter!"
   },
   {
