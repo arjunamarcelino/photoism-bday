@@ -4,6 +4,31 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
 import { wishes, Wish } from "@/data/content";
 
+function VideoThumbnail({ src }: { src: string }) {
+  const [hasFrame, setHasFrame] = useState(false);
+
+  return (
+    <>
+      <video
+        src={src}
+        preload="metadata"
+        className={`absolute inset-0 w-full h-full object-cover object-center ${hasFrame ? "" : "hidden"}`}
+        playsInline
+        muted
+        onLoadedData={() => setHasFrame(true)}
+      />
+      {/* Fallback shown until video frame loads */}
+      {!hasFrame && (
+        <div className="absolute inset-0 bg-gray-200" />
+      )}
+      {/* Play icon overlay */}
+      <div className="absolute inset-0 flex items-center justify-center bg-black/20">
+        <span className="text-2xl text-white drop-shadow">▶</span>
+      </div>
+    </>
+  );
+}
+
 function WishDialog({ wish, onClose }: { wish: Wish; onClose: () => void }) {
   const [mediaLoaded, setMediaLoaded] = useState(false);
 
@@ -130,9 +155,7 @@ export default function WishesContent() {
           {/* Media thumbnail — uniform height for all types */}
           <div className="relative w-full h-24 sm:h-32 bg-gray-100 mac-beveled-inset overflow-hidden">
             {wish.mediaType === "video" ? (
-              <div className="absolute inset-0 flex items-center justify-center bg-gray-200">
-                <span className="text-3xl">▶</span>
-              </div>
+              <VideoThumbnail src={wish.mediaUrl} />
             ) : (
               <Image
                 src={wish.mediaUrl}
