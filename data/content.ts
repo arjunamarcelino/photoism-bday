@@ -26,14 +26,14 @@ export const wishes: Wish[] = [
     id: "2",
     author: "Zz",
     mediaType: "video",
-    mediaUrl: "/images/wishes/friend2.jpg",
+    mediaUrl: "/images/wishes/2.mp4",
     message: ""
   },
   {
     id: "3",
     author: "Tasia",
     mediaType: "photo",
-    mediaUrl: "/images/wishes/friend3.jpg",
+    mediaUrl: "/images/wishes/3.jpg",
     message: "hapibidii kak sharonna✨ may God loves and leads ur way always yaa 🫶🏻"
   },
   {
@@ -41,56 +41,63 @@ export const wishes: Wish[] = [
     author: "Juna",
     mediaType: "photo",
     mediaUrl: "/images/wishes/friend3.jpg",
-    message: "Ka Sharon! Another year of being awesome. May this year bring you even more joy and laughter!"
+    message: "Happy birthday, Ka Sharon! Another year of being awesome. May this year bring you even more joy and laughter!"
   },
   {
     id: "5",
     author: "Nico",
     mediaType: "video",
-    mediaUrl: "/images/wishes/friend3.jpg",
-    message: "Happy birthday to the most wonderful person! Keep shining bright, Ka Sharon!"
+    mediaUrl: "/images/wishes/5.mp4",
+    message: ""
   },
   {
     id: "6",
-    author: "Nomi",
+    author: "Nomi🌧️",
     mediaType: "photo",
-    mediaUrl: "/images/wishes/friend3.jpg",
-    message: "Happy birthday to the most wonderful person! Keep shining bright, Ka Sharon!"
+    mediaUrl: "/images/wishes/6.jpg",
+    message: "Habede kak Sharon, love u gitu"
   },
   {
     id: "7",
     author: "Naya",
-    mediaType: "photo",
-    mediaUrl: "/images/wishes/friend3.jpg",
-    message: "Happy birthday to the most wonderful person! Keep shining bright, Ka Sharon!"
+    mediaType: "video",
+    mediaUrl: "/images/wishes/7.mp4",
+    message: "Happy birthday, big sis!💖 \nI’m so glad to have you in my life. Love you and God bless you, Kak Sharon!  \n\n with love, naya💌"
   },
   {
     id: "8",
     author: "Ocen",
     mediaType: "photo",
-    mediaUrl: "/images/wishes/friend3.jpg",
-    message: "Happy birthday to the most wonderful person! Keep shining bright, Ka Sharon!"
+    mediaUrl: "/images/wishes/8.jpg",
+    message: "happy birthday, mba sahrona! \n i hope this new chapter brings you closer to everything you’ve been praying for. may your heart always be filled with peace, no matter what life brings. you deserve all the good things in this world ♡ \n\n WISH LENGKAPNYAA DI PC YA MBA SARON SAYANG, ILYMOREE THAN YOU KNOW \n\n -ceno"
   },
   {
     id: "9",
     author: "Hans",
     mediaType: "video",
-    mediaUrl: "/images/wishes/friend3.jpg",
-    message: "Happy birthday to the most wonderful person! Keep shining bright, Ka Sharon!"
+    mediaUrl: "/images/wishes/9.mp4",
+    message: "Happy birthday kak sharon, Semoga di usia yang bertambah ini semakin bertumbuh juga di dalam iman dan apa yang di cita citakan tercapai. \n\n ~Hans"
   },
   {
     id: "10",
     author: "Ka Pen",
     mediaType: "video",
-    mediaUrl: "/images/wishes/friend3.jpg",
-    message: "Happy birthday to the most wonderful person! Keep shining bright, Ka Sharon!"
+    mediaUrl: "/images/wishes/10.mp4",
+    message: ""
   },
   {
     id: "11",
     author: "Tirta",
+    mediaType: "video",
+    mediaUrl: "/images/wishes/11.mp4",
+    message: ""
+  },
+  {
+    id: "12",
+    author: "Bryn",
     mediaType: "photo",
-    mediaUrl: "/images/wishes/friend3.jpg",
-    message: "Happy birthday to the most wonderful person! Keep shining bright, Ka Sharon!"
+    mediaUrl: "/images/wishes/12.jpeg",
+    message: "Happy birthday, Kak Sharon 🎂✨ \nHonestly, I’m really grateful bisa kenal kakak sejauh ini. Dari semua momen pelayanan dan obrolan kita, kakak selalu jadi orang yang hangat dan tulus. \n\nHope this new chapter brings you more joy, peace, and everything good that you deserve. Stay the same kind person ya, don’t change 🤍 \n\nGod bless you always, Kak Serona"
   },
 ];
 
