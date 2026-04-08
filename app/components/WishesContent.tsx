@@ -30,8 +30,6 @@ function VideoThumbnail({ src }: { src: string }) {
 }
 
 function WishDialog({ wish, onClose }: { wish: Wish; onClose: () => void }) {
-  const [mediaLoaded, setMediaLoaded] = useState(false);
-
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
@@ -70,14 +68,7 @@ function WishDialog({ wish, onClose }: { wish: Wish; onClose: () => void }) {
         {/* Content */}
         <div className="p-3 mac-beveled-inset m-1 bg-white">
           {/* Media — scales to fit without scrolling */}
-          <div className="relative bg-gray-100 mac-beveled-inset overflow-hidden">
-            {!mediaLoaded && (
-              <div className="absolute inset-0 flex items-center justify-center z-10">
-                <span className="font-[family-name:var(--font-retro)] text-mac-shadow" style={{ fontSize: "13px" }}>
-                  Loading...
-                </span>
-              </div>
-            )}
+          <div className="bg-gray-100 mac-beveled-inset">
             {wish.mediaType === "video" ? (
               <video
                 src={wish.mediaUrl}
@@ -86,7 +77,6 @@ function WishDialog({ wish, onClose }: { wish: Wish; onClose: () => void }) {
                 className="w-full max-h-[50vh] object-contain"
                 playsInline
                 autoPlay
-                onLoadedData={() => setMediaLoaded(true)}
               />
             ) : (
               <Image
@@ -96,7 +86,6 @@ function WishDialog({ wish, onClose }: { wish: Wish; onClose: () => void }) {
                 height={600}
                 className="w-full h-auto max-h-[50vh] object-contain"
                 sizes="(max-width: 768px) 90vw, 400px"
-                onLoad={() => setMediaLoaded(true)}
               />
             )}
           </div>
