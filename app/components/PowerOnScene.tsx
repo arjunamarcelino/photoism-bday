@@ -10,7 +10,16 @@ interface SceneProps {
 export default function PowerOnScene({ onComplete }: SceneProps) {
   const [showHint, setShowHint] = useState(false);
   const [activated, setActivated] = useState(false);
+  const [bgReady, setBgReady] = useState(false);
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
+
+  // Preload lock screen background
+  useEffect(() => {
+    const img = new Image();
+    img.src = "/images/home.png";
+    img.onload = () => setBgReady(true);
+    img.onerror = () => setBgReady(true); // don't block if missing
+  }, []);
 
   useEffect(() => {
     const timer = setTimeout(() => setShowHint(true), 3000);
@@ -22,7 +31,7 @@ export default function PowerOnScene({ onComplete }: SceneProps) {
   }, []);
 
   const handleClick = () => {
-    if (activated) return;
+    if (activated || !bgReady) return;
     setActivated(true);
     playSound("/audio/chime.mp3");
     timeoutRef.current = setTimeout(() => onComplete(), 500);
@@ -33,14 +42,16 @@ export default function PowerOnScene({ onComplete }: SceneProps) {
       <button
         onClick={handleClick}
         aria-label="Power on"
-        className="cursor-pointer border-none bg-transparent outline-none focus:outline-none"
+        disabled={!bgReady}
+        className="cursor-pointer border-none bg-transparent outline-none focus:outline-none disabled:cursor-wait"
       >
         <span
           className="block text-[#444] hover:text-[#888] transition-colors duration-300"
           style={{
             fontSize: "72px",
             lineHeight: 1,
-            animation: "pulse 2s ease-in-out infinite",
+            animation: bgReady ? "pulse 2s ease-in-out infinite" : "none",
+            opacity: bgReady ? undefined : 0.2,
           }}
         >
           ⏻
@@ -54,7 +65,7 @@ export default function PowerOnScene({ onComplete }: SceneProps) {
             fontSize: "13px",
           }}
         >
-          Click to power on
+          {bgReady ? "Click to power on" : "Loading..."}
         </p>
       )}
     </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useMemo } from "react";
+import { useState, useRef, useMemo, useCallback } from "react";
 import { motion } from "motion/react";
 import Image from "next/image";
 import { photos } from "@/data/content";
@@ -8,6 +8,11 @@ import { photos } from "@/data/content";
 export default function GalleryContent() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [topCard, setTopCard] = useState<string | null>(null);
+  const [loadedImages, setLoadedImages] = useState<Set<string>>(new Set());
+
+  const handleImageLoad = useCallback((id: string) => {
+    setLoadedImages((prev) => new Set(prev).add(id));
+  }, []);
 
   // Pre-compute scattered positions for each card (stable across re-renders)
   const cardPositions = useMemo(
@@ -57,13 +62,21 @@ export default function GalleryContent() {
           >
             <div className="bg-white p-2 shadow-lg border border-gray-200 hover:shadow-xl transition-shadow w-36 sm:w-48 md:w-56 pointer-events-none select-none">
               <div className="relative w-full h-28 sm:h-36 md:h-44 bg-gray-100">
+                {!loadedImages.has(photo.id) && (
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <span className="font-[family-name:var(--font-retro)] text-mac-shadow" style={{ fontSize: "11px" }}>
+                      Loading...
+                    </span>
+                  </div>
+                )}
                 <Image
                   src={photo.url}
                   alt={photo.caption ?? `Photo ${photo.id}`}
                   fill
-                  className="object-cover"
+                  className={`object-cover transition-opacity ${loadedImages.has(photo.id) ? "opacity-100" : "opacity-0"}`}
                   draggable={false}
                   sizes="(max-width: 640px) 144px, 240px"
+                  onLoad={() => handleImageLoad(photo.id)}
                 />
               </div>
               {photo.caption && (

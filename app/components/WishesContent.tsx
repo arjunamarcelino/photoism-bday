@@ -5,6 +5,8 @@ import Image from "next/image";
 import { wishes, Wish } from "@/data/content";
 
 function WishDialog({ wish, onClose }: { wish: Wish; onClose: () => void }) {
+  const [mediaLoaded, setMediaLoaded] = useState(false);
+
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
@@ -43,15 +45,23 @@ function WishDialog({ wish, onClose }: { wish: Wish; onClose: () => void }) {
         {/* Content */}
         <div className="p-3 mac-beveled-inset m-1 bg-white">
           {/* Media — scales to fit without scrolling */}
-          <div className="bg-gray-100 mac-beveled-inset">
+          <div className="relative bg-gray-100 mac-beveled-inset">
+            {!mediaLoaded && (
+              <div className="flex items-center justify-center h-32">
+                <span className="font-[family-name:var(--font-retro)] text-mac-shadow" style={{ fontSize: "13px" }}>
+                  Loading...
+                </span>
+              </div>
+            )}
             {wish.mediaType === "video" ? (
               <video
                 src={wish.mediaUrl}
                 controls
                 preload="metadata"
-                className="w-full max-h-[50vh] object-contain"
+                className={`w-full max-h-[50vh] object-contain ${mediaLoaded ? "" : "hidden"}`}
                 playsInline
                 autoPlay
+                onLoadedData={() => setMediaLoaded(true)}
               />
             ) : (
               <Image
@@ -59,8 +69,9 @@ function WishDialog({ wish, onClose }: { wish: Wish; onClose: () => void }) {
                 alt={`Photo from ${wish.author}`}
                 width={800}
                 height={600}
-                className="w-full h-auto max-h-[50vh] object-contain"
+                className={`w-full h-auto max-h-[50vh] object-contain ${mediaLoaded ? "" : "hidden"}`}
                 sizes="(max-width: 768px) 90vw, 400px"
+                onLoad={() => setMediaLoaded(true)}
               />
             )}
           </div>
