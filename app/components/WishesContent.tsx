@@ -70,9 +70,9 @@ function WishDialog({ wish, onClose }: { wish: Wish; onClose: () => void }) {
         {/* Content */}
         <div className="p-3 mac-beveled-inset m-1 bg-white">
           {/* Media — scales to fit without scrolling */}
-          <div className="relative bg-gray-100 mac-beveled-inset">
+          <div className="relative bg-gray-100 mac-beveled-inset overflow-hidden">
             {!mediaLoaded && (
-              <div className="flex items-center justify-center h-32">
+              <div className="absolute inset-0 flex items-center justify-center z-10">
                 <span className="font-[family-name:var(--font-retro)] text-mac-shadow" style={{ fontSize: "13px" }}>
                   Loading...
                 </span>
@@ -83,7 +83,7 @@ function WishDialog({ wish, onClose }: { wish: Wish; onClose: () => void }) {
                 src={wish.mediaUrl}
                 controls
                 preload="metadata"
-                className={`w-full max-h-[50vh] object-contain ${mediaLoaded ? "" : "hidden"}`}
+                className="w-full max-h-[50vh] object-contain"
                 playsInline
                 autoPlay
                 onLoadedData={() => setMediaLoaded(true)}
@@ -94,7 +94,7 @@ function WishDialog({ wish, onClose }: { wish: Wish; onClose: () => void }) {
                 alt={`Photo from ${wish.author}`}
                 width={800}
                 height={600}
-                className={`w-full h-auto max-h-[50vh] object-contain ${mediaLoaded ? "" : "hidden"}`}
+                className="w-full h-auto max-h-[50vh] object-contain"
                 sizes="(max-width: 768px) 90vw, 400px"
                 onLoad={() => setMediaLoaded(true)}
               />
