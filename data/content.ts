@@ -55,7 +55,7 @@ export const wishes: Wish[] = [
     author: "Nomi🌧️",
     mediaType: "photo",
     mediaUrl: "/images/wishes/6.jpg",
-    message: "Habede kak Sharon, love u gitu"
+    message: "Habede kak Sharon, love u ❤️"
   },
   {
     id: "7",
